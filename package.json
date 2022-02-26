@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.3"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "social-network-nosql",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennyk1989/social-network-nosql.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jennyk1989/social-network-nosql/issues"
+  },
+  "homepage": "https://github.com/jennyk1989/social-network-nosql#readme"
+}
