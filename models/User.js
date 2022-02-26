@@ -8,19 +8,27 @@ const UserSchema = new Schema(
         //username field: string, unique, required, trimmed
         username: {
             type: String,
-
+            unique: true,
+            required: true,
+            trim: true
         },
         //email: string, required, unique, validation
         email: {
-
+            type: String,
+            required: true,
+            unique: true,
+            //validation for email address via regex
+            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
         },
         //thoughts: array of _id vals referencing Thought model
         thoughts: {
-
+            type: Schema.Types.ObjectId, //so Mongoose knows to expect a thought
+            ref: 'Thought' //tells User model to search Thought doc to find thoughts
         },
         //friends: array of _id vals referencing User model (self-reference)
         friends: {
-
+            type: Schema.Types.ObjectId,
+            ref: 'User' //tells User model to search User model (itself)
         }
     },
     {
