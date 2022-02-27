@@ -2,9 +2,10 @@ const { User } = require('../models'); //import the User model
 
 //routes to /api/users...
 const userController = {
+    
     // get all users
     getAllUsers() {
-
+        
     },
     // get single user by _id & populated thought & friend data
     getUserById() {

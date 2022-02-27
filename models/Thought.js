@@ -2,6 +2,40 @@
 const { Schema, model, Types } = require('mongoose');
 // date formatter here
 
+//Reaction schema...
+const ReactionSchema = new Schema (
+    {
+        //reactionId: ObjectId data type, default value = new ObjectId
+        reactionID: { //custom id to avoid confusion w/ Thoughts _id
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()         
+        },
+        //reactionBody: string, required, 280 char max
+        reactionBody: {
+            type: String,
+            required: true,
+            maxlength: 280
+        },
+        //username: string, required
+        username: {
+            type: String,
+            required: true
+        },
+        //createdAt: date, set default val to current timestamp, getter method to format timestamp on query
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (createdTime) => dateFormat(createdTime)
+        },
+    },
+    {
+        toJSON: {
+            getters: true
+        }
+    }
+);
+//settings: not a model, but used as the reactions field's subdoc schema in the Thought model
+
 const ThoughtSchema = new Schema(
     {
         //thoughtText: string, required, btw 1 - 280 characters
@@ -37,40 +71,6 @@ const ThoughtSchema = new Schema(
 ThoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
 });
-
-//Reaction schema...
-const ReactionSchema = new Schema (
-    {
-        //reactionId: ObjectId data type, default value = new ObjectId
-        reactionID: { //custom id to avoid confusion w/ Thoughts _id
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId()         
-        },
-        //reactionBody: string, required, 280 char max
-        reactionBody: {
-            type: String,
-            required: true,
-            maxlength: 280
-        },
-        //username: string, required
-        username: {
-            type: String,
-            required: true
-        },
-        //createdAt: date, set default val to current timestamp, getter method to format timestamp on query
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (createdTime) => dateFormat(createdTime)
-        },
-    },
-    {
-        toJSON: {
-            getters: true
-        }
-    }
-);
-//settings: not a model, but used as the reactions field's subdoc schema in the Thought model
 
 //create Thought model
 const Thought = model('Thought', ThoughtSchema);
