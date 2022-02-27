@@ -1,4 +1,3 @@
-
 const router = require('express').Router();
 
 //importing controller functionality 
@@ -31,4 +30,4 @@ router
     .post(addFriend)
     .delete(deleteFriend);
 
-module.export = router;
+module.exports = router;
