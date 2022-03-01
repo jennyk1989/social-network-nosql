@@ -4,11 +4,31 @@ const { Thought, User } = require('../models');
 // routes to /api/thoughts
 const thoughtControlller = {
     // GET to get all thoughts
-    getAllThoughts() {
+    getAllThoughts(req, res) {
+        Thought.find({})
+            .sort({ _id: -1 })
+            .then(thoughtData => res.json(thoughtData))
+            .catch(err => res.status(400).json(err));
     },
     // GET to get single thought by _id
-    getThoughtById() {
-
+    getThoughtById({ params }, res) {
+        Thought.findOne({ _id: params.id })
+            .populate({
+                path: 'reactions',
+                select: '-__v'
+            })
+            .select('-__v')
+            .then(thoughtData => {
+                if(!thoughtData) {
+                    res.status(404).json({ message: 'User data not found'});
+                    return;
+                }
+                res.json(thoughtData);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(400).json(err);
+            });
     },
     // POST to create new thought (push created thought's _id to associated user's thoughts array field)
     createThought() {
