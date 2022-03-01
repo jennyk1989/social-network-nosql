@@ -5,7 +5,6 @@ const { Thought, User } = require('../models');
 const thoughtControlller = {
     // GET to get all thoughts
     getAllThoughts() {
-
     },
     // GET to get single thought by _id
     getThoughtById() {
