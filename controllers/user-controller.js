@@ -41,31 +41,84 @@ const userController = {
                 };
                 res.json(userdata);
             })
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err)
-            })
+            .catch(err => res.status(400).json(err))
     },
     // post a new user
-    createUser() {
-
+    createUser({ body }, res) { //destructuring body out of the req object
+        User.create(body)
+            .then(userdata => res.json(userdata))
+            .catch(err => res.status(400).json(err))
     },
     // put to update a user by _id
-    updateUser() {
-
+    updateUser({ params, body }, res) {
+        User.findOneAndUpdate(
+            { _id: params.id }, 
+            body, 
+            { new: true, runValidators: true } //want updated (new) User returned and want it validated
+        )
+            .then(userdata => {
+                if(!userdata) {
+                    res.status(404).json({ message: 'User not found'});
+                    return;
+                }
+                res.json(userdata);
+            })
+            .catch(err => res.status(400).json(err));
     },
     // delete to remove user by _id
-    deleteUser() {
-
+    deleteUser({ params }, res) {
+        User.findOneAndDelete({ _id: params.id })
+            .then(userdata => {
+                if(!userdata) {
+                    res.status(404).json({ message: 'User not found'});
+                    return;
+                }
+                res.json(userdata);
+            })
+            .catch(err => res.status(400).json(err));
     },
     //routes to /api/users/:userId/friends/:friendId...
     // POST to add new freind 
-    addFriend() {
-
+    addFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.id },
+            { $push: { friends: params.friendId }}, //MongoDB's push operator to add friend to friends array
+            { new: true, runValidators: true }
+        )
+        .populate({
+            path: 'friends',
+            select: ('-__V')
+        })
+        .select('-__v')
+        .then(userdata => {
+            if(!userdata) {
+                res.status(404).json({ message: 'User not found'});
+                return;
+            }
+            res.json(userdata);
+        })
+        .catch(err => res.status(400).json(err));
     },
     // DELETE to remove friend 
-    deleteFriend() {
-
+    deleteFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.id },
+            { $pull: { friends: params.friendId }}, //MongoDB's pull operator to remove friend from friends array
+            { new: true }
+        )
+        .populate({
+            path: 'friends',
+            select: ('-__V')
+        })
+        .select('-__v')
+        .then(userdata => {
+            if(!userdata) {
+                res.status(404).json({ message: 'User not found'});
+                return;
+            }
+            res.json(userdata);
+        })
+        .catch(err => res.status(400).json(err));
     },
 };
 
