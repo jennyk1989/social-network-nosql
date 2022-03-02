@@ -1,10 +1,25 @@
+# ================= requests to /api/users: =================
 POST  http://localhost:3001/api/users HTTP/1.1
 content-type: application/json
 
 {
-    "username": "charlieboy",
-    "email": "dog@gmail.com"
+    "username": "wesley",
+    "email": "wesley@gmail.com"
 }
 
 ###
 GET  http://localhost:3001/api/users 
+
+###
+# ================= requests to /api/thoughts/ =================
+POST  http://localhost:3001/api/thoughts/621fcf63e161772e1ab13625 HTTP/1.1
+content-type: application/json
+
+{
+    "thoughtText": "I love treats",
+    "username": "jack"
+}
+
+###
+GET  http://localhost:3001/api/thoughts/
+
