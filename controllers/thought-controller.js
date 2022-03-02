@@ -1,5 +1,6 @@
 // import Thought, User models
-const { Thought, User } = require('../models');
+const { Thought } = require('../models/Thought');
+const User = require('../models/User');
 
 // routes to /api/thoughts
 const thoughtController = {
@@ -11,7 +12,7 @@ const thoughtController = {
     },
     // GET to get single thought by _id
     getThoughtById({ params }, res) { //destructured params out of req object
-        Thought.findOne({ _id: params.thoughtId }) //find the thought by its _id
+        Thought.findOne({ _id: params.thoughtId })//find the thought by its _id
             .then(thoughtData => {
                 if(!thoughtData) {
                     res.status(404).json({ message: 'User data not found'});
