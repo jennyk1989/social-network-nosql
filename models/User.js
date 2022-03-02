@@ -1,6 +1,6 @@
 //import mongoose's Schema constuctor and model fx
-const { Schema, model } = require('mongoose')
-//date formatting import
+const { Schema, model, Types } = require('mongoose')
+
 
 // create user schema
 const UserSchema = new Schema(
@@ -21,32 +21,35 @@ const UserSchema = new Schema(
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
         },
         //thoughts: array of _id vals referencing Thought model
-        thoughts: {
-            type: Schema.Types.ObjectId, //so Mongoose knows to expect a thought
-            ref: 'Thought' //tells User model to search Thought doc to find thoughts
-        },
+        thoughts: [{
+            //tell Mongoose to expect a thought
+            type: Schema.Types.ObjectId, 
+            //tell User model to search Thought doc to find thoughts
+            ref: 'Thought' 
+        }],
         //friends: array of _id vals referencing User model (self-reference)
-        friends: {
+        friends: [{
             type: Schema.Types.ObjectId,
-            ref: 'User' //tells User model to search User model (itself)
-        }
+            //tells User model to search User model (itself)
+            ref: 'User' 
+        }]
     },
     {
         toJSON: {
-            //tell schema that it can use virtuals 
+            //tell schema that it can use virtuals and getters
             virtuals: true,
-            //getters here if needed
+            getters: true
         },
         id: false //prevents virtual's duplication of _id as 'id'
     }
 );
+const User = model('User', UserSchema); //creating User model
 
-//Schema: Create virtual friendCount that retrieves length of user's friends array field on query
+//Create virtual friendCount that retrieves length of user's friends array field on query
 UserSchema.virtual('friendCount').get( function() {
     //length of array
     return this.friends.length;
 });
 
-const User = model('User', UserSchema); //creating User model
 //export the User model:
-module.exports = User;
+module.exports =  User;
