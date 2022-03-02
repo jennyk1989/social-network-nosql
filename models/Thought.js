@@ -1,7 +1,6 @@
 //import Monogooses's things
 const { Schema, model, Types } = require('mongoose');
-// date formatter here
-
+const moment = require('moment');
 //Reaction schema...
 const ReactionSchema = new Schema (
     {
@@ -25,13 +24,14 @@ const ReactionSchema = new Schema (
         createdAt: {
             type: Date,
             default: Date.now,
-            get: (createdTime) => dateFormat(createdTime)
-        },
+            get: (createdDateTime) => moment(createdDateTime).format('MM DD YY [at] hh:mm a')
+        }
     },
     {
         toJSON: {
             getters: true
-        }
+        },
+        id: false
     }
 );
 //settings: not a model, but used as the reactions field's subdoc schema in the Thought model
@@ -49,7 +49,7 @@ const ThoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: createdTime => dateFormat(createdTime)
+            get: (createdDateTime) => moment(createdDateTime).format('MM DD YY [at] hh:mm a')
         },
         //username(user who created thought): string, required
         username: {
@@ -67,13 +67,14 @@ const ThoughtSchema = new Schema(
         id: false
     }
 );
+//create Thought model
+const Thought = model('Thought', ThoughtSchema);
+
 //schema: create virtual reactionCount that retrieves lenght of thought's reactions array field on query
 ThoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
 });
 
-//create Thought model
-const Thought = model('Thought', ThoughtSchema);
 //export Thought model
-module.exports = Thought;
+module.exports = { Thought };
 

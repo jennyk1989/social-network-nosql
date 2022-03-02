@@ -22,7 +22,7 @@ router
     .put(updateThought)
     .delete(deleteThought);
 
-// routes to /apid/thoughts/:userId
+// routes to /api/thoughts/:userId
 router
     .route('/:userId')
     .post(createThought);
