@@ -23,7 +23,7 @@ const thoughtController = {
             .catch(err => res.status(400).json(err));
     },
     // POST to create new thought (push created thought's _id to associated user's thoughts array field)
-    createThought() {
+    createThought({ params, body }, res) {
         Thought.create(body)
             .then(({ _id }) => {
                 return User.findOneAndUpdate(
