@@ -13,9 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "moment": "^2.29.1",
-    "mongoose": "^5.9.18",
+    "mongoose": "^6.2.4",
     "nodemon": "^2.0.15"
   },
   "homepage": "https://github.com/jennyk1989/social-network-nosql#readme"
