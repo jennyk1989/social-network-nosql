@@ -1,7 +1,7 @@
 # social-network-nosql
 ![badge](https://img.shields.io/badge/License-MIT-blue)
 ## Description
-Backend of a social networking app
+This is an API built using Express.js, MongoDB, and Node.js for use in a social networking app where user's are able to add friends, share thoughts, and react to other users' thoughts.
 ## Table of Contents 
 * [Installation](#Installation)
 * [Usage](#Usage)
