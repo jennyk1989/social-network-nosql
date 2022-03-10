@@ -1,25 +1,79 @@
 # ================= requests to /api/users: =================
-POST  http://localhost:3001/api/users HTTP/1.1
+###
+GET http://localhost:3001/api/users 
+
+###
+GET http://localhost:3001/api/users/62297ae7abb6aa1a310950b9
+
+###
+POST http://localhost:3001/api/users/62297b3dabb6aa1a310950c1 HTTP/1.1
+content-type: application/json
+
+{
+    "username": "charm",
+    "email": "charm@gmail.com"
+}
+
+###
+
+PUT http://localhost:3001/api/users/62297b16abb6aa1a310950bf HTTP/1.1
 content-type: application/json
 
 {
     "username": "wesley",
     "email": "wesley@gmail.com"
 }
-
 ###
-GET  http://localhost:3001/api/users 
+
+DELETE http://localhost:3001/api/users/62297b43abb6aa1a310950c3
+###
+
+# ================= /api/users/:userId/friends/:friendId =================
+POST http://localhost:3001/api/users/62297c0cabb6aa1a310950c7/friends/62297af4abb6aa1a310950bb HTTP/1.1
+content-type: application/json
+
+{
+    "username": "wesley",
+    "email": "wesley@gmail.com"
+}
+###
+DELETE http://localhost:3001/api/users/333333/friends/4444444
 
 ###
 # ================= requests to /api/thoughts/ =================
-POST  http://localhost:3001/api/thoughts/621fcf63e161772e1ab13625 HTTP/1.1
+GET  http://localhost:3001/api/thoughts/
+###
+GET  http://localhost:3001/api/thoughts/4444444
+###
+
+POST  http://localhost:3001/api/thoughts/62297b3dabb6aa1a310950c1 HTTP/1.1
 content-type: application/json
 
 {
     "thoughtText": "I love treats",
     "username": "jack"
 }
+###
+PUT  http://localhost:3001/api/thoughts/621fcf63e161772e1ab13625 HTTP/1.1
+content-type: application/json
+
+{
+    "thoughtText": "I love tennis balls",
+    "username": "jack"
+}
+###
+DELETE  http://localhost:3001/api/thoughts/4444444
+###
+
+# ================= requests to /api/thoughts/:thoughtId/reactions =================
+POST http://localhost:3001/api/thoughts/333333/reactions HTTP/1.1
+content-type: application/json
+
+{
+    "username": "wesley",
+    "email": "wesley@gmail.com"
+}
+###
+DELETE http://localhost:3001/api/thoughts/333333/reactions
 
 ###
-GET  http://localhost:3001/api/thoughts/
-
