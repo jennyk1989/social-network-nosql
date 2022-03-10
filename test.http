@@ -43,6 +43,7 @@ DELETE http://localhost:3001/api/users/333333/friends/4444444
 # ================= requests to /api/thoughts/ =================
 GET  http://localhost:3001/api/thoughts/
 ###
+
 GET  http://localhost:3001/api/thoughts/4444444
 ###
 
