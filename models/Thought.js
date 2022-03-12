@@ -77,5 +77,5 @@ ThoughtSchema.virtual('reactionCount').get(function() {
 });
 
 //export Thought model
-module.exports = { Thought };
+module.exports = Thought;
 
