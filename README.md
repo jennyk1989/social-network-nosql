@@ -17,6 +17,8 @@ This is an API built using Express.js, MongoDB, and Node.js for use in a social 
 ## Usage
 ### Screenshots
 
+### Videos
+
 ## Licence 📃
 MIT License
 ## Contribution 💡
