@@ -101,8 +101,8 @@ const thoughtController = {
             { $pull: { reactions: { reactionId: params.reactionId } } },
             { new: true }
         )
-            .then(dbUserData => res.json(dbUserData))
-            .catch(err => res.status(400).json(err));
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => res.status(400).json(err));
     },
 };
 
