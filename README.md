@@ -18,6 +18,9 @@ This is an API built using Express.js, MongoDB, and Node.js for use in a social 
 ### Screenshots
 
 ### Videos
+User Routes Demonstration through Insomnia: 
+
+Thought & Reaction Routes Demonstration throught Insomnia: 
 
 ## Licence 📃
 MIT License
