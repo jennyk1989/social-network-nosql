@@ -16,13 +16,13 @@ This is an API built using Express.js, MongoDB, and Node.js for use in a social 
 * npm start
 ## Usage
 ### Videos
-Starting Up Server throught Terminal:
+#### Starting Up Server throught Terminal:
 https://user-images.githubusercontent.com/92952780/158031150-71ca4bcf-ec0f-4f76-bd6f-bab6f9043d5e.mp4
 
-User Routes Demonstration through Insomnia: 
+#### User Routes Demonstration through Insomnia: 
 https://user-images.githubusercontent.com/92952780/158031141-cb086006-e861-4263-9a4c-c445e597789e.mp4
 
-Thought & Reaction Routes Demonstration throught Insomnia: 
+#### Thought & Reaction Routes Demonstration throught Insomnia: 
 https://user-images.githubusercontent.com/92952780/158031146-0dbaeca1-e0cc-4368-8e1a-a56e0dd9b846.mp4
 ## Licence 📃
 MIT License
