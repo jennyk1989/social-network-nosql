@@ -44,7 +44,7 @@ DELETE http://localhost:3001/api/users/333333/friends/4444444
 GET  http://localhost:3001/api/thoughts/
 ###
 
-GET  http://localhost:3001/api/thoughts/4444444
+GET  http://localhost:3001/api/thoughts/62297d2aabb6aa1a310950d2
 ###
 
 POST  http://localhost:3001/api/thoughts/62297b3dabb6aa1a310950c1 HTTP/1.1
