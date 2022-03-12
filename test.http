@@ -67,12 +67,12 @@ DELETE  http://localhost:3001/api/thoughts/4444444
 ###
 
 # ================= requests to /api/thoughts/:thoughtId/reactions =================
-POST http://localhost:3001/api/thoughts/333333/reactions HTTP/1.1
+POST http://localhost:3001/api/thoughts/62297d2aabb6aa1a310950d2/reactions HTTP/1.1
 content-type: application/json
 
 {
     "username": "wesley",
-    "email": "wesley@gmail.com"
+    "reactionBody": "me too"
 }
 ###
 DELETE http://localhost:3001/api/thoughts/333333/reactions
