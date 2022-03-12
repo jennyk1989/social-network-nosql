@@ -1,4 +1,4 @@
-const { User } = require('../models'); //import the User model
+const { Thought, User } = require('../models'); //import the User model
 
 //routes to /api/users...
 const userController = {
